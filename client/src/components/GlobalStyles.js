@@ -2,14 +2,18 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   :root {
-      --primary-color: #5bb462;
+      --primary-color: #EEF0F2;
       --secondary-color: #111820;
+      --outline-color: #67a2a2;
+      --primary-bg-color: #022B3A;
+      --secondary-bg-color: #eef0f2;
+      --primary-bg-color: #022B3A;
       --accent-bg-color: #D7ECEF;
       --page-horizontal-padding: 20px;
       --page-vertical-padding: 50px;
       --header-height: 50px;
       --max-content-width: 1200px;
-      --heading-font-family: 'Rubik', sans-serif;
+      --heading-font-family: 'EB Garamond', serif;
       --user-img-width: 120px;
       --user-img-margin: 5px;
       --nav-width: 250px;
@@ -31,6 +35,7 @@ export default createGlobalStyle`
 
     html, body {
         max-width: 100vw;
+        background-color: #022B3A;
 
     }
 html, body, div, span, applet, object, iframe,
@@ -74,17 +79,20 @@ html, body, div, span, applet, object, iframe,
         content: none;
     }
     h1, h2, h3 {
-      color: var(--primary-color);
+      
       font-family: var(--heading-font-family);
     }
     h1{
-        font-size: xxx-large;
+        font-size: 40px;
+        color: var(--primary-color);
     }
     h2{
-        font-size: xx-large;;
+        font-size: 25px;
+        color: #A3A3A3;
     }
     h3{
         font-size: larger;
+    
     }
     h4{
         font-size: large;

@@ -6,6 +6,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Header from "./Header"
 import NewQuestion from "./NewQuestion"
+import ErrorPage from "./ErrorPage";
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path="/new-question">
             <NewQuestion />
+          </Route>
+          <Route path="/">
+            <ErrorPage />
           </Route>
         </Switch>
       </Router>

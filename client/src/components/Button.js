@@ -5,6 +5,7 @@ const Button = styled.button`
   text-decoration: none;
   outline: none;
   border: 2px solid;
+  border-radius: 10px;
   border-color: (--primary-color);
   width: 150px;
   height: 50px;
@@ -14,7 +15,7 @@ const Button = styled.button`
   &:hover {
     /* border-color: (--accent-bg-color); */
     color: var(--secondary-color);
-    background-color: var(--primary-color);
+    background-color: var(--outline-color);
   }
   &:disabled {
     color: white;

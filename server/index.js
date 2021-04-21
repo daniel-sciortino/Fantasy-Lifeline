@@ -9,6 +9,8 @@ const {
 } = require("../server/routes/handlers/users-handler");
 const {
   addQuestion,
+  getAllQuestions,
+  updateQuestion,
 } = require("../server/routes/handlers/newQuestion-handler");
 
 require("dotenv").config();
@@ -39,7 +41,10 @@ express()
   .post("/sign-up", addUser)
 
   /////// New Question ///////
+  .get("/all-questions", getAllQuestions)
+  .put("/all-questions/:id", updateQuestion)
   .post("/new-question", addQuestion)
+  
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
 

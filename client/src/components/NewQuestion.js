@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
+import { GrPowerReset } from 'react-icons/gr';
 
 const NewQuestion = () => {
   const [teams, setTeams] = useState(null);
@@ -93,7 +94,6 @@ const NewQuestion = () => {
           );
 
           setRosterTwo(filteredRoaster);
-          
         } else {
           setRosterTwo(data.roster);
           return;
@@ -166,12 +166,25 @@ const NewQuestion = () => {
 
   return (
     <Wrapper>
-      <h1>Are you in need of some Fantasy advice?</h1>
+      <h1>
+        FantasyLifeline know's asking your friends for fantasy advice isn't an
+        option...
+      </h1>
       <p>
-        Adding & dropping players sometimes gets stressfull. FantasyLifeline
-        always has your back!{" "}
+        Follow 3 easy steps to get that honest fantasy help you always needed.
       </p>
-      <h2>Pick Players</h2>
+      <StepsContainer>
+        <h2>
+          <u>STEP 1</u>: Pick two players you are undecided on.
+        </h2>
+        <h2>
+          <u>STEP 2</u>: Submit new request.
+        </h2>
+        <h2>
+          <u>STEP 3</u>: Check back later to see which option FantasyLifeline
+          member's think is best for you.
+        </h2>
+      </StepsContainer>
 
       <PlayerBoxesContainer>
         {!selectedPlayerOne || !selectedTeamOne ? (
@@ -197,9 +210,13 @@ const NewQuestion = () => {
           </PlayerBox>
         ) : (
           <PlayerBox>
-            <h2>{playerOne?.fullName}</h2>
+            <h2>
+              {" "}
+              <h3># {playerOne?.primaryNumber}</h3>
+              {playerOne?.fullName}
+            </h2>
             <h4> {playerOne?.currentTeam.name} </h4>
-            <h3>(# {playerOne?.primaryNumber})</h3>
+
             {playerOne?.id && (
               <img
                 src={`http://nhl.bamcontent.com/images/headshots/current/168x168/${playerOne?.id}.jpg`}
@@ -213,7 +230,7 @@ const NewQuestion = () => {
             <h4>
               Birth Place: {playerOne?.birthCity}, {playerOne?.birthCountry}{" "}
             </h4>
-            <button onClick={handleResetPlayerOne}>Clear</button>
+            <Button style={{width: "60px", height: "30px"}} onClick={handleResetPlayerOne}>Reset</Button>
           </PlayerBox>
         )}
         {!selectedPlayerTwo || !selectedTeamTwo ? (
@@ -239,26 +256,30 @@ const NewQuestion = () => {
           </PlayerBox>
         ) : (
           <PlayerBox>
-            <h2>{playerTwo?.fullName}</h2>
+            <h2>
+              <h3># {playerTwo?.primaryNumber}</h3>
+              {playerTwo?.fullName}{" "}
+            </h2>
             <h4> {playerTwo?.currentTeam.name} </h4>
-            <h3>(# {playerTwo?.primaryNumber})</h3>
+
             <img
               src={`http://nhl.bamcontent.com/images/headshots/current/168x168/${playerTwo?.id}.jpg`}
               alt="profile"
             ></img>
+
             <h4>Position: {playerTwo?.primaryPosition.abbreviation} </h4>
             <h4>Age: {playerTwo?.currentAge} </h4>
             <h4>Height: {playerTwo?.height} </h4>
             <h4>
               Birth Place: {playerTwo?.birthCity}, {playerTwo?.birthCountry}{" "}
             </h4>
-            <button onClick={handleResetPlayerTwo}>Clear</button>
+            <Button style={{width: "60px", height: "30px"}} onClick={handleResetPlayerTwo}>Reset</Button>
           </PlayerBox>
         )}
       </PlayerBoxesContainer>
       <Button style={{ margin: "40px" }} onClick={handleSubmit}>
         {" "}
-        Select
+        Submit
       </Button>
     </Wrapper>
   );
@@ -266,40 +287,56 @@ const NewQuestion = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid fuchsia;
+  background-color: var(--primary-bg-color);
 
   h1,
   h2 {
-    margin: 40px 0px 5px 0px;
+    margin: 15px;
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: #67a2a2;
   }
 `;
+
+const StepsContainer = styled.div`
+  margin-left: 145px;
+`;
 const PlayerBoxesContainer = styled.div`
-  width: 80%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   box-sizing: border-box;
-  border: solid yellow;
+  background-color: #eef0f2;
+  padding: 100px;
 `;
 const PlayerBox = styled.div`
   width: 350px;
-  min-width: 25%;
+  max-width: 350px;
   min-height: 500px;
   max-height: 700px;
-  border: solid blue 4px;
-  border-radius: 10px;
+
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  border: solid 1px #adb5bd;
+  background-image: url("https://www.nhltraderumor.com/wp-content/uploads/2014/08/ice-hockey-twitter-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
 
   select {
     width: 90%;
@@ -311,13 +348,42 @@ const PlayerBox = styled.div`
     padding: 10px;
   }
 
-  h2,
-  h3,
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    width: 100%;
+    color: white;
+    background-color: #022b3a;
+
+    h3{
+      margin-right: 25px;
+      margin-left: -45px;
+    }
+  }
+  h3 {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    padding: 2px;
+    color: #2d3142;
+    border-radius: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-left: 0px;
+  }
   h4 {
     padding: 5px;
   }
   img {
     margin: 10px;
+    width: 80%;
+    max-height: 200px;
+    border: solid 1px #2d3142;
+    image-rendering: auto;
   }
 `;
 

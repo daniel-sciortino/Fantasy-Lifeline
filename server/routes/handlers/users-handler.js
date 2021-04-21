@@ -1,7 +1,29 @@
 const User = require("../../models/user");
+const { MongoClient } = require("mongodb");
+const { db } = require("../../models/new-question");
+require("dotenv").config();
+const { MONGO_URI } = process.env;
 
-const getUserById = (req, res) => {
-  const foundUser = User.findOne({ email: req.body.email });
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
+const getUserById = async (req, res) => {
+  // const foundUser = User.findOne({ email: req.body.email });
+  // console.log(foundUser);
+
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  
+
+  const db = client.db("FantasyLifeline");
+  const foundUser = await db.collection("users").findOne({ email: req.body.email })
+console.log(foundUser);
+  console.log("connected!");
+
+  client.close();
+  console.log("disconnected!");
 
   if (!foundUser) {
     res.status(200).json({

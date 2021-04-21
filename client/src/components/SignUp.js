@@ -42,7 +42,7 @@ const SignUp = () => {
       headers: { "Content-Type": "application/json" },
     };
 
-    if ((password = !confirmPassword)) {
+    if ((password != confirmPassword)) {
       setConfirmPasswordError(true);
       return;
     } else {
@@ -61,6 +61,7 @@ const SignUp = () => {
   };
   return (
     <Body>
+
       <FormContainer>
         <h1>Create an Account</h1>
 
@@ -68,7 +69,7 @@ const SignUp = () => {
           style={
             confirmPasswordError === true
               ? { border: " solid red ", borderRadius: "7px" }
-              : { backgroundColor: "white" }
+              : { backgroundColor: "var(--secondary-bg-color)" }
           }
         >
           {confirmPasswordError === false ? (
@@ -159,14 +160,23 @@ const SignUp = () => {
 const Body = styled.div`
   width: 100%;
   height: 85vh;
+  background-image: url("/Images/Sign-in-background.jpeg");
+  display:flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 700px;
+  width: 500px;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  background-color: var(--secondary-bg-color);
+  
+  
 
   h1 {
     justify-content: center;
@@ -175,6 +185,7 @@ const FormContainer = styled.div`
     text-align: center;
     height: 15%;
     font-size: 50px;
+    color: var(--primary-bg-color);
   }
 
   form {
@@ -201,18 +212,18 @@ const FormContainer = styled.div`
 `;
 const AuthErrorMsg = styled.div`
   display: flex;
-
   min-width: 380px;
   max-width: 70%;
   min-height: 80px;
   max-height: 80px;
   margin-bottom: 10px;
-  color: var(--secondary-color);
   text-align: center;
+ 
 
   span {
     display: flex;
     align-items: center;
+    background-color: var(--secondary-bg-color);
   }
 `;
 
