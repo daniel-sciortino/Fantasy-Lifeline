@@ -25,7 +25,7 @@ console.log(foundUser);
   client.close();
   console.log("disconnected!");
 
-  if (!foundUser) {
+  if (foundUser) {
     res.status(200).json({
       status: 200,
       user: foundUser,

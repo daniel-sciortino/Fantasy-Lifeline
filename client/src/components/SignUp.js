@@ -87,6 +87,8 @@ const SignUp = () => {
         </AuthErrorMsg>
 
         <form onSubmit={handleSubmit}>
+          <NameContainer>
+            <div>
           <label for="first-name">
             <b>First name</b>
           </label>
@@ -97,6 +99,8 @@ const SignUp = () => {
             name="first-name"
             required
           />
+          </div>
+          <div>
           <label for="last-name">
             <b>Last name</b>
           </label>
@@ -107,6 +111,8 @@ const SignUp = () => {
             name="last-name"
             required
           />
+          </div>
+          </NameContainer>
           <label for="email">
             <b>Email</b>
           </label>
@@ -146,7 +152,7 @@ const SignUp = () => {
             <Button
               type="submit"
               onClick={handleSubmit}
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "10px", marginBottom: "10px" }}
             >
               Sign Up
             </Button>
@@ -169,8 +175,11 @@ const Body = styled.div`
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 700px;
-  width: 500px;
+  height: 100%;
+  max-height: 550px;
+  
+  width: 510px;
+  max-width: 550px;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
@@ -200,16 +209,30 @@ const FormContainer = styled.div`
 
   input {
     height: 50px;
-    width: 75%;
+    width: 91%;
     border-radius: 7px;
     margin-top: 4px;
     margin-right: 3px;
     margin-bottom: 4px;
+    
   }
   label {
     padding: 5px;
   }
 `;
+
+const NameContainer = styled.div `
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+text-align: center;
+
+input {
+width: 98%;
+}
+
+`
 const AuthErrorMsg = styled.div`
   display: flex;
   min-width: 380px;

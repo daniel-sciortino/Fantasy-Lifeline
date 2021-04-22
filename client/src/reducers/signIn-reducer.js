@@ -19,8 +19,7 @@ const initialState = {
         };
   
       case "SIGN_OUT":
-        return { ...state, email: "", password: "", isSignedIn: false };
-  
+        return { ...initialState}
       default:
         return state;
     }

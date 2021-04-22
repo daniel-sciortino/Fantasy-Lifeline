@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -7,6 +7,11 @@ import ErrorPage from "./ErrorPage";
 import { useMediaQuery } from "./useMediaQuery";
 import Loading from "./Loading";
 import Button from "./Button";
+import { GiCoinsPile } from "react-icons/gi";
+
+interface IProps {
+  isDisabled?: Boolean;
+}
 
 const Homepage = () => {
   const [allQuestions, setAllQuestions] = useState([null]);
@@ -14,6 +19,24 @@ const Homepage = () => {
   const [question, setQuestion] = useState([null]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState(null);
+  const [voteComplete, setVoteComplete] = useState(false);
+  const state = useSelector((state) => state.signIn);
+
+  const requestOptionsVoteOne = {
+    method: "PUT",
+    body: JSON.stringify({
+      votePlayerOne: question?.votePlayerOne?.concat(currentUserId),
+    }),
+    headers: { "Content-Type": "application/json" },
+  };
+  const requestOptionsVoteTwo = {
+    method: "PUT",
+    body: JSON.stringify({
+      votePlayerTwo: state?._id,
+    }),
+    headers: { "Content-Type": "application/json" },
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +44,6 @@ const Homepage = () => {
     fetch(`/all-questions`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.questions);
         setAllQuestions(data.questions);
       })
       .catch((error) => {
@@ -30,6 +52,15 @@ const Homepage = () => {
         setError(true);
       });
   }, []);
+  /////// set either logged in user ID or offline userID ////////
+  useEffect(() => {
+    if (state._id) {
+      setCurrentUserId(state._id);
+    } else {
+      setCurrentUserId("55555555");
+    }
+  }, []);
+  /////////////////////////////////////////////////////////
 
   useEffect(() => {
     let totalQuestions = allQuestions.length;
@@ -40,16 +71,13 @@ const Homepage = () => {
     setQuestion(allQuestions[questionCount]);
   }, [questionCount]);
 
-  console.log(questionCount);
-
-  console.log(question);
-
   //////////////////// button next Question /////////////////
 
   const handleNextQuestion = (e) => {
     e.preventDefault();
     if (questionCount > -1) {
       setQuestionCount(questionCount - 1);
+      setVoteComplete(false);
     } else {
       setQuestionCount(0);
     }
@@ -57,6 +85,17 @@ const Homepage = () => {
 
   const handleVoteOne = (e) => {
     console.log(e.currentTarget.value);
+
+    fetch(`/vote-one/${e.currentTarget.value}`, requestOptionsVoteOne)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log("vote 1", json);
+        if (json.status === 200) {
+        } else if (json.status === 400) {
+          return window.alert("This user already exists");
+        }
+        setVoteComplete(true);
+      });
   };
 
   const handleVoteTwo = (e) => {
@@ -66,13 +105,12 @@ const Homepage = () => {
   return (
     <Wrapper>
       <TitleContainer>
-      <h1>Someone out there needs your help!</h1>
-      <h2>Click on the player you believe is the better fantasy option.</h2>
+        <h1>Someone out there needs your help!</h1>
+        <h2>Click on the player you believe is the better fantasy option.</h2>
       </TitleContainer>
       {question ? (
-       
         <QuestionContainerBg>
-          <QuestionContainer>
+          <QuestionContainer disabled={voteComplete}>
             <PlayerBox onClick={handleVoteOne} value={question._id}>
               <h2>
                 <h3># {question?.playerOne?.primaryNumber}</h3>
@@ -122,11 +160,15 @@ const Homepage = () => {
                 {question?.playerOne?.birthCountry}{" "}
               </h4>
             </PlayerBox>
-            
           </QuestionContainer>
-          <Button style={{fontSize: "1rem", fontWeight: "bold"}}onClick={handleNextQuestion}> Next </Button>
+          <Button
+            style={{ fontSize: "1rem", fontWeight: "bold" }}
+            onClick={handleNextQuestion}
+          >
+            {" "}
+            Next{" "}
+          </Button>
         </QuestionContainerBg>
-      
       ) : (
         <div>loading</div>
       )}
@@ -143,7 +185,6 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: #2d3142;
   background-color: var(--primary-bg-color);
- 
 
   h1,
   h2 {
@@ -155,15 +196,12 @@ const Wrapper = styled.div`
     color: white;
   }
 `;
-const TitleContainer = styled.div `
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-
-
-
-`
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 const QuestionContainerBg = styled.div`
   width: 100%;
   height: 100%;
@@ -185,12 +223,20 @@ const QuestionContainer = styled.div`
   box-sizing: border-box;
   padding: 50px;
 
-  && :hover {
-    box-shadow: 0 0 10pt 4pt var(--outline-color);
-  
-}
-`;
+  button {
+    ${({ disabled }) =>
+      disabled &&
+      css`
+        cursor: not-allowed;
+      `}
+  }
 
+  button:hover {
+     {
+      box-shadow: 0 0 10pt 4pt var(--outline-color);
+    }
+  }
+`;
 
 const PlayerBox = styled.button`
   width: 350px;
@@ -210,9 +256,6 @@ const PlayerBox = styled.button`
   background-size: cover;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
 
-
-  
-
   h2 {
     display: flex;
     justify-content: center;
@@ -222,7 +265,7 @@ const PlayerBox = styled.button`
     color: white;
     background-color: #022b3a;
 
-    h3{
+    h3 {
       margin-right: 25px;
       margin-left: -45px;
     }
@@ -250,7 +293,5 @@ const PlayerBox = styled.button`
     border: solid 1px #2d3142;
     image-rendering: auto;
   }
-
- 
 `;
 export default Homepage;
