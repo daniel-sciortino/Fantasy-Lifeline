@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 
 const Home = () => {
-  
+
   return (
     <Wrapper>
       <TitleContainer>
@@ -60,7 +60,7 @@ const Home = () => {
             You must be a Fantasy Lifeline member to recieve vote results. What
             are you waiting for???
           </h2>
-          <StyledLink to="/new-question"> Sign Up Now!</StyledLink>
+          <StyledLink to="/sign-up"> Sign Up Now!</StyledLink>
         </LinkContainer>
       </RoutesContainer>
     </Wrapper>
