@@ -120,6 +120,8 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   position: relative;
+  justify-content:center;
+  text-align: center;
 `;
 
 export default Home;

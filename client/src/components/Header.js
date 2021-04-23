@@ -67,11 +67,10 @@ const Logo = styled.img`
   margin-right: auto;
   height: 100px;
   width: 150px;
-  /* border: solid 3px #67a2a2;  */
 `;
 
 const StyledNavLink = styled(NavLink)`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 1rem;
   text-decoration: none;
   color: var(--secondary-bg-color);
@@ -79,13 +78,18 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   position: relative;
+  border: 1px solid transparent;
+  /* padding-top:10px;
+  padding-bottom:10px; */
+  padding: 12px 5px 12px 5px;
 
   &&:hover {
     border: 1px solid var(--outline-color);
     border-radius: 5px;
-    padding: 10px;
+
     text-shadow: 0 0 1px white;
     align-items: center;
+    padding: 12px 5px 12px 5px;
   }
 `;
 
