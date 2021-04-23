@@ -27,7 +27,7 @@ const Home = () => {
           <h2>
             {" "}
             Pick two players you are unsure of & receive honest advice from
-            fellow Fantasy Lifeline Members
+             Fantasy Lifeline Members.
           </h2>
           <StyledLink to="/new-question"> Get Fantasy Advice</StyledLink>
         </LinkContainer>
@@ -44,7 +44,7 @@ const Home = () => {
             People out there need your advice as well. Simply click on the
             player you see as the better option for NHL Fantasy Hockey.
           </h2>
-          <StyledLink to="/new-question"> Start Helping Now!</StyledLink>
+          <StyledLink to="/questions"> Start Helping Now!</StyledLink>
         </LinkContainer>
 
         <LinkContainer>

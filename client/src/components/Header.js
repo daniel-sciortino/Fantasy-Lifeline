@@ -30,7 +30,7 @@ const Header = () => {
         ) : (
           <span>
             <StyledNavLink to="/profile">Profile</StyledNavLink>
-            <StyledNavLink to="#" onClick={handleSignOut}>
+            <StyledNavLink to="/" onClick={handleSignOut}>
               Sign Out
             </StyledNavLink>
           </span>
