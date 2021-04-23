@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-
-import ErrorPage from "./ErrorPage";
-import { useMediaQuery } from "./useMediaQuery";
-import Loading from "./Loading";
+import { useSelector } from "react-redux";
 import Button from "./Button";
-import { GiCoinsPile } from "react-icons/gi";
 
-
-const Homepage = () => {
+const Questions = () => {
   const [allQuestions, setAllQuestions] = useState([null]);
   const [questionCount, setQuestionCount] = useState(0);
   const [question, setQuestion] = useState([null]);
@@ -90,9 +83,8 @@ const Homepage = () => {
         if (json.status === 200 && questionCount > -1) {
           setQuestionCount(questionCount - 1);
           setVoteComplete(false);
-
         } else if (json.status === 400) {
-          return 
+          return;
         }
         setVoteComplete(true);
       });
@@ -100,18 +92,16 @@ const Homepage = () => {
 
   const handleVoteTwo = (e) => {
     fetch(`/vote-two/${e.currentTarget.value}`, requestOptionsVoteTwo)
-    .then((res) => res.json())
-    .then((json) => {
-  
-      if (json.status === 200) {
-        setQuestionCount(questionCount - 1);
-        setVoteComplete(false);
-
-      } else if (json.status === 400) {
-        return 
-      }
-      setVoteComplete(true);
-    });
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.status === 200) {
+          setQuestionCount(questionCount - 1);
+          setVoteComplete(false);
+        } else if (json.status === 400) {
+          return;
+        }
+        setVoteComplete(true);
+      });
   };
 
   return (
@@ -304,4 +294,4 @@ const PlayerBox = styled.button`
     image-rendering: auto;
   }
 `;
-export default Homepage;
+export default Questions;

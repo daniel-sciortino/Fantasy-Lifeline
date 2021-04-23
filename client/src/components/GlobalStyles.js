@@ -7,7 +7,6 @@ export default createGlobalStyle`
       --outline-color: #67a2a2;
       --primary-bg-color: #022B3A;
       --secondary-bg-color: #eef0f2;
-      --primary-bg-color: #022B3A;
       --accent-bg-color: #D7ECEF;
       --page-horizontal-padding: 20px;
       --page-vertical-padding: 50px;

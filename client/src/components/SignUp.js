@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signUp } from "../actions";
 import styled from "styled-components";
@@ -42,7 +42,7 @@ const SignUp = () => {
       headers: { "Content-Type": "application/json" },
     };
 
-    if ((password != confirmPassword)) {
+    if (password != confirmPassword) {
       setConfirmPasswordError(true);
       return;
     } else {
@@ -52,7 +52,7 @@ const SignUp = () => {
           console.log("sign-up", json);
           if (json.status === 200) {
             dispatch(signUp(json.user));
-            return history.push("/");
+            return history.push("/signed-up");
           } else if (json.status === 400) {
             return window.alert("This user already exists");
           }
@@ -61,7 +61,6 @@ const SignUp = () => {
   };
   return (
     <Body>
-
       <FormContainer>
         <h1>Create an Account</h1>
 
@@ -89,29 +88,29 @@ const SignUp = () => {
         <form onSubmit={handleSubmit}>
           <NameContainer>
             <div>
-          <label for="first-name">
-            <b>First name</b>
-          </label>
-          <input
-            ref={firstNameRef}
-            type="text"
-            placeholder="First name"
-            name="first-name"
-            required
-          />
-          </div>
-          <div>
-          <label for="last-name">
-            <b>Last name</b>
-          </label>
-          <input
-            ref={lastNameRef}
-            type="text"
-            placeholder="Last Name"
-            name="last-name"
-            required
-          />
-          </div>
+              <label for="first-name">
+                <b>First name</b>
+              </label>
+              <input
+                ref={firstNameRef}
+                type="text"
+                placeholder="First name"
+                name="first-name"
+                required
+              />
+            </div>
+            <div>
+              <label for="last-name">
+                <b>Last name</b>
+              </label>
+              <input
+                ref={lastNameRef}
+                type="text"
+                placeholder="Last Name"
+                name="last-name"
+                required
+              />
+            </div>
           </NameContainer>
           <label for="email">
             <b>Email</b>
@@ -167,7 +166,8 @@ const Body = styled.div`
   width: 100%;
   height: 85vh;
   background-image: url("/Images/Sign-in-background.jpeg");
-  display:flex;
+  background-size: cover;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
@@ -177,15 +177,13 @@ const FormContainer = styled.div`
   flex-direction: column;
   height: 100%;
   max-height: 550px;
-  
+
   width: 510px;
   max-width: 550px;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   background-color: var(--secondary-bg-color);
-  
-  
 
   h1 {
     justify-content: center;
@@ -214,25 +212,23 @@ const FormContainer = styled.div`
     margin-top: 4px;
     margin-right: 3px;
     margin-bottom: 4px;
-    
   }
   label {
     padding: 5px;
   }
 `;
 
-const NameContainer = styled.div `
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100%;
-text-align: center;
+const NameContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 
-input {
-width: 98%;
-}
-
-`
+  input {
+    width: 98%;
+  }
+`;
 const AuthErrorMsg = styled.div`
   display: flex;
   min-width: 380px;
@@ -241,7 +237,6 @@ const AuthErrorMsg = styled.div`
   max-height: 80px;
   margin-bottom: 10px;
   text-align: center;
- 
 
   span {
     display: flex;

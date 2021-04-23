@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
-import { GrPowerReset } from 'react-icons/gr';
-import { useSelector, useDispatch } from "react-redux";
+
+import { useSelector } from "react-redux";
 
 const NewQuestion = () => {
   const [teams, setTeams] = useState(null);
@@ -20,6 +20,7 @@ const NewQuestion = () => {
   const [playerTwo, setPlayerTwo] = useState(null);
   const [currentUserId, setCurrentUserId] = useState(null);
   const state = useSelector((state) => state.signIn);
+  let history = useHistory();
   //////////////////////////////Fetch to get All NHL teams in dropdown
   useEffect(() => {
     console.log("teams");
@@ -38,7 +39,7 @@ const NewQuestion = () => {
       setCurrentUserId("55555555");
     }
   }, []);
- 
+
   ///////////////////////////// Player 1 ///////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////// Once team1 selected fetch selectedTeam Roster///////////////////////////////////////////
@@ -169,9 +170,9 @@ const NewQuestion = () => {
       .then((json) => {
         console.log("new-req", json);
         if (json.status === 200) {
-          return window.alert("success");
+          return history.push("/request-submited");
         } else if (json.status === 400) {
-          return window.alert("Error");
+          return window.alert("Error Please Try again");
         }
       });
   };
@@ -242,7 +243,12 @@ const NewQuestion = () => {
             <h4>
               Birth Place: {playerOne?.birthCity}, {playerOne?.birthCountry}{" "}
             </h4>
-            <Button style={{width: "60px", height: "30px"}} onClick={handleResetPlayerOne}>Reset</Button>
+            <Button
+              style={{ width: "60px", height: "30px" }}
+              onClick={handleResetPlayerOne}
+            >
+              Reset
+            </Button>
           </PlayerBox>
         )}
         {!selectedPlayerTwo || !selectedTeamTwo ? (
@@ -285,7 +291,12 @@ const NewQuestion = () => {
             <h4>
               Birth Place: {playerTwo?.birthCity}, {playerTwo?.birthCountry}{" "}
             </h4>
-            <Button style={{width: "60px", height: "30px"}} onClick={handleResetPlayerTwo}>Reset</Button>
+            <Button
+              style={{ width: "60px", height: "30px" }}
+              onClick={handleResetPlayerTwo}
+            >
+              Reset
+            </Button>
           </PlayerBox>
         )}
       </PlayerBoxesContainer>
@@ -369,7 +380,7 @@ const PlayerBox = styled.div`
     color: white;
     background-color: #022b3a;
 
-    h3{
+    h3 {
       margin-right: 25px;
       margin-left: -45px;
     }

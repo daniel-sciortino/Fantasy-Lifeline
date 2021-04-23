@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "../actions";
 
@@ -10,7 +10,7 @@ const Header = () => {
 
   const handleSignOut = (e) => {
     dispatch(signOut());
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
@@ -20,7 +20,8 @@ const Header = () => {
       </NavLink>
 
       <NavLinkContainer>
-        <StyledNavLink to="/new-question">New Request</StyledNavLink>
+        <StyledNavLink to="/new-question">Get Fantasy Advice</StyledNavLink>
+        <StyledNavLink to="/new-question">Give Fantasy Advice</StyledNavLink>
         {!isSignedIn._id ? (
           <span>
             <StyledNavLink to="/login">Sign In</StyledNavLink>
@@ -53,7 +54,7 @@ const NavLinkContainer = styled.div`
   position: absolute;
   right: 0px;
   display: flex;
-  max-width: 450px;
+  max-width: 650px;
   max-height: 80px;
   font-size: 1.5rem;
   justify-content: center;

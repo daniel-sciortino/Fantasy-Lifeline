@@ -9,7 +9,7 @@ const ErrorPage = () => {
       <span>
         <HomeLink to={"/"}>Go back home</HomeLink>
       </span>
-      <Image src="" />
+      <Image src="/Images/buzzer.png" />
     </Wrapper>
   );
 };
@@ -37,6 +37,7 @@ const Image = styled.img`
   margin: 50px;
   width: 400px;
   height: 400px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
 `;
 
 const Wrapper = styled.div`

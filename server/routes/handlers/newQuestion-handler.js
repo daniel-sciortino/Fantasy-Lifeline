@@ -65,9 +65,8 @@ const updateVoteOne = async (req, res) => {
   const _id = req.params.id;
   console.log("1:", _id);
   const query = { _id };
-  
-  const newValues = { $set: { votePlayerOne: req.body.votePlayerOne } };
 
+  const newValues = { $set: { votePlayerOne: req.body.votePlayerOne } };
 
   if (!req.body) {
     res.status(404).json({ status: 404, message: "must use hello" });
@@ -78,8 +77,6 @@ const updateVoteOne = async (req, res) => {
     const results = await db
       .collection("newQuestions")
       .updateOne({ _id: ObjectID(_id) }, newValues);
-
-  
 
     assert.equal(1, results.matchedCount);
     assert.equal(1, results.modifiedCount);
@@ -95,9 +92,8 @@ const updateVoteTwo = async (req, res) => {
   const client = await MongoClient(MONGO_URI, options);
   const _id = req.params.id;
   const query = { _id };
-  
-  const newValues = { $set: { votePlayerTwo: req.body.votePlayerTwo } };
 
+  const newValues = { $set: { votePlayerTwo: req.body.votePlayerTwo } };
 
   if (!req.body) {
     res.status(404).json({ status: 404, message: "must use hello" });
@@ -109,8 +105,6 @@ const updateVoteTwo = async (req, res) => {
       .collection("newQuestions")
       .updateOne({ _id: ObjectID(_id) }, newValues);
 
-  
-
     assert.equal(1, results.matchedCount);
     assert.equal(1, results.modifiedCount);
 
@@ -120,8 +114,6 @@ const updateVoteTwo = async (req, res) => {
   }
   client.close();
 };
-
-
 
 module.exports = {
   addQuestion,

@@ -11,8 +11,6 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { useMediaQuery } from "../components/useMediaQuery";
 
 const Signin = () => {
- 
-
   const emailRef = useRef();
   const passwordRef = useRef();
   const dispatch = useDispatch();
@@ -171,7 +169,11 @@ const Signin = () => {
           />
 
           <ButtonContainer>
-            <Button type="submit" onClick="submit" style={{ marginTop: "10px" }}>
+            <Button
+              type="submit"
+              onClick="submit"
+              style={{ marginTop: "10px" }}
+            >
               Login
             </Button>
             <Link
@@ -194,7 +196,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-image: url("/Images/Sign-in-background.jpeg");
-  background-size: cover contain;
+  background-size: cover;
 
   form {
     height: 500px;

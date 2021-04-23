@@ -46,7 +46,6 @@ express()
   .post("/new-question", addQuestion)
   .put("/vote-one/:id", updateVoteOne)
   .put("/vote-two/:id", updateVoteTwo)
-  
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
 
