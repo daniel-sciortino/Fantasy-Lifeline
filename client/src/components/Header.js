@@ -21,7 +21,7 @@ const Header = () => {
 
       <NavLinkContainer>
         <StyledNavLink to="/new-question">Get Fantasy Advice</StyledNavLink>
-        <StyledNavLink to="/new-question">Give Fantasy Advice</StyledNavLink>
+        <StyledNavLink to="/questions">Give Fantasy Advice</StyledNavLink>
         {!isSignedIn._id ? (
           <span>
             <StyledNavLink to="/login">Sign In</StyledNavLink>

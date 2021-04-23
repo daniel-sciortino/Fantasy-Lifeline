@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Questions from "./Questions";
+import Homepage from "./Questions";
 import GlobalStyles from "./GlobalStyles";
 import Home from "./Home";
 import SignIn from "./SignIn";
@@ -23,7 +23,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/questions">
-            <Questions />
+            <Homepage />
           </Route>
           <Route exact path="/login">
             <SignIn />

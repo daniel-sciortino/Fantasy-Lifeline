@@ -168,7 +168,7 @@ const Questions = () => {
             onClick={handleNextQuestion}
           >
             {" "}
-            Next{" "}
+            Skip{" "}
           </Button>
         </QuestionContainerBg>
       ) : (
