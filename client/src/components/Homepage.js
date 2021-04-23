@@ -9,9 +9,6 @@ import Loading from "./Loading";
 import Button from "./Button";
 import { GiCoinsPile } from "react-icons/gi";
 
-interface IProps {
-  isDisabled?: Boolean;
-}
 
 const Homepage = () => {
   const [allQuestions, setAllQuestions] = useState([null]);
@@ -33,7 +30,7 @@ const Homepage = () => {
   const requestOptionsVoteTwo = {
     method: "PUT",
     body: JSON.stringify({
-      votePlayerTwo: state?._id,
+      votePlayerTwo: question?.votePlayerTwo?.concat(currentUserId),
     }),
     headers: { "Content-Type": "application/json" },
   };
@@ -90,16 +87,31 @@ const Homepage = () => {
       .then((res) => res.json())
       .then((json) => {
         console.log("vote 1", json);
-        if (json.status === 200) {
+        if (json.status === 200 && questionCount > -1) {
+          setQuestionCount(questionCount - 1);
+          setVoteComplete(false);
+
         } else if (json.status === 400) {
-          return window.alert("This user already exists");
+          return 
         }
         setVoteComplete(true);
       });
   };
 
   const handleVoteTwo = (e) => {
-    console.log(e.currentTarget.value);
+    fetch(`/vote-two/${e.currentTarget.value}`, requestOptionsVoteTwo)
+    .then((res) => res.json())
+    .then((json) => {
+  
+      if (json.status === 200) {
+        setQuestionCount(questionCount - 1);
+        setVoteComplete(false);
+
+      } else if (json.status === 400) {
+        return 
+      }
+      setVoteComplete(true);
+    });
   };
 
   return (
@@ -232,9 +244,7 @@ const QuestionContainer = styled.div`
   }
 
   button:hover {
-     {
-      box-shadow: 0 0 10pt 4pt var(--outline-color);
-    }
+    box-shadow: 0 0 10pt 4pt var(--outline-color);
   }
 `;
 

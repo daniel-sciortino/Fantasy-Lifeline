@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
 import { GrPowerReset } from 'react-icons/gr';
+import { useSelector, useDispatch } from "react-redux";
 
 const NewQuestion = () => {
   const [teams, setTeams] = useState(null);
@@ -17,7 +18,8 @@ const NewQuestion = () => {
   const [playerTwoLink, setPlayerTwoLink] = useState(null);
   const [playerOne, setPlayerOne] = useState(null);
   const [playerTwo, setPlayerTwo] = useState(null);
-
+  const [currentUserId, setCurrentUserId] = useState(null);
+  const state = useSelector((state) => state.signIn);
   //////////////////////////////Fetch to get All NHL teams in dropdown
   useEffect(() => {
     console.log("teams");
@@ -28,6 +30,15 @@ const NewQuestion = () => {
       });
   }, []);
 
+  /////// set either logged in user ID or offline userID ////////
+  useEffect(() => {
+    if (state._id) {
+      setCurrentUserId(state._id);
+    } else {
+      setCurrentUserId("55555555");
+    }
+  }, []);
+ 
   ///////////////////////////// Player 1 ///////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////// Once team1 selected fetch selectedTeam Roster///////////////////////////////////////////
@@ -148,6 +159,7 @@ const NewQuestion = () => {
       body: JSON.stringify({
         playerOne: playerOne,
         playerTwo: playerTwo,
+        userId: currentUserId,
       }),
       headers: { "Content-Type": "application/json" },
     };

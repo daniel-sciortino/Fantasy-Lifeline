@@ -15,6 +15,7 @@ const addQuestion = async (req, res) => {
   const newQuestion = new NewQuestion({
     playerOne: req.body.playerOne,
     playerTwo: req.body.playerTwo,
+    userId: req.body.userId,
     votePlayerOne: [],
     votePlayerTwo: [],
   });
@@ -59,17 +60,14 @@ const getAllQuestions = async (req, res) => {
   }
 };
 
-const updateQuestion = async (req, res) => {
+const updateVoteOne = async (req, res) => {
   const client = await MongoClient(MONGO_URI, options);
   const _id = req.params.id;
   console.log("1:", _id);
   const query = { _id };
-  console.log("2:", query);
+  
   const newValues = { $set: { votePlayerOne: req.body.votePlayerOne } };
 
-  console.log("3:", newValues);
-
-  console.log("4:", req.body);
 
   if (!req.body) {
     res.status(404).json({ status: 404, message: "must use hello" });
@@ -81,8 +79,7 @@ const updateQuestion = async (req, res) => {
       .collection("newQuestions")
       .updateOne({ _id: ObjectID(_id) }, newValues);
 
-    console.log("5:", results.matchedCount);
-    console.log("6:", results.modifiedCount);
+  
 
     assert.equal(1, results.matchedCount);
     assert.equal(1, results.modifiedCount);
@@ -94,8 +91,41 @@ const updateQuestion = async (req, res) => {
   client.close();
 };
 
+const updateVoteTwo = async (req, res) => {
+  const client = await MongoClient(MONGO_URI, options);
+  const _id = req.params.id;
+  const query = { _id };
+  
+  const newValues = { $set: { votePlayerTwo: req.body.votePlayerTwo } };
+
+
+  if (!req.body) {
+    res.status(404).json({ status: 404, message: "must use hello" });
+  }
+  try {
+    await client.connect();
+    const db = client.db();
+    const results = await db
+      .collection("newQuestions")
+      .updateOne({ _id: ObjectID(_id) }, newValues);
+
+  
+
+    assert.equal(1, results.matchedCount);
+    assert.equal(1, results.modifiedCount);
+
+    res.status(200).json({ status: 200, _id, message: "Updated Successfully" });
+  } catch (err) {
+    res.status(500).json({ status: 500, message: err.message });
+  }
+  client.close();
+};
+
+
+
 module.exports = {
   addQuestion,
   getAllQuestions,
-  updateQuestion,
+  updateVoteOne,
+  updateVoteTwo,
 };

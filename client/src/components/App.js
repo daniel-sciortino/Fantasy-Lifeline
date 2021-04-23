@@ -7,6 +7,7 @@ import SignUp from "./SignUp";
 import Header from "./Header"
 import NewQuestion from "./NewQuestion"
 import ErrorPage from "./ErrorPage";
+import Profile from "./Profile";
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/new-question">
             <NewQuestion />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
           </Route>
           <Route path="/">
             <ErrorPage />

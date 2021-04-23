@@ -7,10 +7,11 @@ import { signOut } from "../actions";
 const Header = () => {
   const isSignedIn = useSelector((state) => state.signIn);
   const dispatch = useDispatch();
-  
+
   const handleSignOut = (e) => {
     dispatch(signOut());
-  }
+    window.location.reload()
+  };
 
   return (
     <Wrapper>
@@ -28,7 +29,9 @@ const Header = () => {
         ) : (
           <span>
             <StyledNavLink to="/profile">Profile</StyledNavLink>
-            <StyledNavLink to="#" onClick={handleSignOut} >Sign Out</StyledNavLink>
+            <StyledNavLink to="#" onClick={handleSignOut}>
+              Sign Out
+            </StyledNavLink>
           </span>
         )}
       </NavLinkContainer>
@@ -50,15 +53,13 @@ const NavLinkContainer = styled.div`
   position: absolute;
   right: 0px;
   display: flex;
-  width: 450px;
-  height: 80px;
+  max-width: 450px;
+  max-height: 80px;
   font-size: 1.5rem;
   justify-content: center;
 
   span {
     display: flex;
-  
-    
   }
 `;
 const Logo = styled.img`
@@ -83,6 +84,7 @@ const StyledNavLink = styled(NavLink)`
     border-radius: 5px;
     padding: 10px;
     text-shadow: 0 0 1px white;
+    align-items: center;
   }
 `;
 
