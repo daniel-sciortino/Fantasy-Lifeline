@@ -18,7 +18,7 @@ const SignUp = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+  
   };
 
   const handleSubmit = (e) => {
@@ -42,14 +42,14 @@ const SignUp = () => {
       headers: { "Content-Type": "application/json" },
     };
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setConfirmPasswordError(true);
       return;
     } else {
       fetch("/sign-up", requestOptions)
         .then((res) => res.json())
         .then((json) => {
-          console.log("sign-up", json);
+        
           if (json.status === 200) {
             dispatch(signUp(json.user));
             return history.push("/signed-up");

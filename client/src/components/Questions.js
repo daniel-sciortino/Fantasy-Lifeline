@@ -38,7 +38,7 @@ const Questions = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log("ERROR", error);
+      
         setError(true);
       });
   }, []);
@@ -74,12 +74,12 @@ const Questions = () => {
   };
 
   const handleVoteOne = (e) => {
-    console.log(e.currentTarget.value);
+  
 
     fetch(`/vote-one/${e.currentTarget.value}`, requestOptionsVoteOne)
       .then((res) => res.json())
       .then((json) => {
-        console.log("vote 1", json);
+      
         if (json.status === 200 && questionCount > -1) {
           setQuestionCount(questionCount - 1);
           setVoteComplete(false);

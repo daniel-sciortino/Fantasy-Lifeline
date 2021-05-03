@@ -10,16 +10,14 @@ const options = {
 };
 
 const getUserById = async (req, res) => {
-  // const foundUser = User.findOne({ email: req.body.email });
-  // console.log(foundUser);
-
   const client = await MongoClient(MONGO_URI, options);
   await client.connect();
-  
 
   const db = client.db("FantasyLifeline");
-  const foundUser = await db.collection("users").findOne({ email: req.body.email })
-console.log(foundUser);
+  const foundUser = await db
+    .collection("users")
+    .findOne({ email: req.body.email });
+
   console.log("connected!");
 
   client.close();
@@ -37,7 +35,6 @@ console.log(foundUser);
     });
   }
 };
-
 
 const addUser = async (req, res) => {
   const foundUser = User.findOne({ email: req.body.email });

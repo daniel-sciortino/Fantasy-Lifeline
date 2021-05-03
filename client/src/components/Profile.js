@@ -11,12 +11,9 @@ const Profile = () => {
     fetch(`/all-questions`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(state._id);
         setAllQuestions(data.questions);
       })
-      .catch((error) => {
-        console.log("ERROR", error);
-      });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
@@ -25,7 +22,6 @@ const Profile = () => {
       userId?.includes(question?.userId)
     );
     setUserQuestions(usersQuestions);
-    console.log(usersQuestions);
   }, [allQuestions]);
 
   function capitalizeFirstLetter(string) {
@@ -37,7 +33,7 @@ const Profile = () => {
       <h3>Welcome back, {capitalizeFirstLetter(state.firstName)}!</h3>
       <TitleContainer>
         <h1>The people have spoken </h1>
-        <img src="/Images/SPOKEN.png"></img>
+        <img src="/Images/SPOKEN.png" alt="spoken"></img>
       </TitleContainer>
       <Table>
         <tr>

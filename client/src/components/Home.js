@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 
 const Home = () => {
-
   return (
     <Wrapper>
       <TitleContainer>
@@ -27,7 +26,7 @@ const Home = () => {
           <h2>
             {" "}
             Pick two players you are unsure of & receive honest advice from
-             Fantasy Lifeline Members.
+            Fantasy Lifeline Members.
           </h2>
           <StyledLink to="/new-question"> Get Fantasy Advice</StyledLink>
         </LinkContainer>
@@ -120,7 +119,7 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   position: relative;
-  justify-content:center;
+  justify-content: center;
   text-align: center;
 `;
 

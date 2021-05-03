@@ -1,12 +1,10 @@
 import React, { useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signIn } from "../actions";
 import styled from "styled-components";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Button from "./Button";
 import { Link } from "react-router-dom";
-import { GiEdgeCrack, GiRobotAntennas, GiWhiteBook } from "react-icons/gi";
-import { HiOutlineArrowCircleRight } from "react-icons/hi";
 import { FiAlertTriangle } from "react-icons/fi";
 import { useMediaQuery } from "../components/useMediaQuery";
 
@@ -31,7 +29,6 @@ const Signin = () => {
     fetch("/login", requestOptions)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         if (
           json.status === 200 &&
           json.user.email === email &&
@@ -40,8 +37,8 @@ const Signin = () => {
           dispatch(signIn(json.user));
           return history.push("/");
         } else if (
-          (json.status === 200 && json.user.email != email) ||
-          json?.user?.password != password
+          (json.status === 200 && json.user.email !== email) ||
+          json?.user?.password !== password
         ) {
           setPasswordError(true);
           return;

@@ -63,7 +63,6 @@ const getAllQuestions = async (req, res) => {
 const updateVoteOne = async (req, res) => {
   const client = await MongoClient(MONGO_URI, options);
   const _id = req.params.id;
-  console.log("1:", _id);
   const query = { _id };
 
   const newValues = { $set: { votePlayerOne: req.body.votePlayerOne } };

@@ -23,7 +23,7 @@ const NewQuestion = () => {
   let history = useHistory();
   //////////////////////////////Fetch to get All NHL teams in dropdown
   useEffect(() => {
-    console.log("teams");
+    
     fetch("https://statsapi.web.nhl.com/api/v1/teams")
       .then((res) => res.json())
       .then((data) => {
@@ -44,7 +44,7 @@ const NewQuestion = () => {
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////// Once team1 selected fetch selectedTeam Roster///////////////////////////////////////////
   useEffect(() => {
-    console.log("team1-roster");
+  
     fetch(`https://statsapi.web.nhl.com/${selectedTeamOne}/roster`)
       .then((res) => res.json())
       .then((data) => {
@@ -55,7 +55,7 @@ const NewQuestion = () => {
 
   ////////////////////////////// Once Player1 selected SetPlayerOneLink ///////////////////////////////////////////
   useEffect(() => {
-    console.log("3");
+  
     let playerOne = roster?.find(
       (player) => player.person.fullName === selectedPlayerOne
     );
@@ -64,7 +64,7 @@ const NewQuestion = () => {
 
   ////////////////////////////// Once Player1 selected fetch Player Data with PlayerOneLink ///////////////////////////////////////////
   useEffect(() => {
-    console.log("4");
+  
     fetch(`https://statsapi.web.nhl.com/${playerOneLink}`)
       .then((res) => res.json())
       .then((data) => {
@@ -86,7 +86,7 @@ const NewQuestion = () => {
   ///////////////////////////// Player 2 ///////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   useEffect(() => {
-    console.log("5");
+   
     fetch("https://statsapi.web.nhl.com/api/v1/teams")
       .then((res) => res.json())
       .then((data) => {
@@ -95,14 +95,14 @@ const NewQuestion = () => {
   }, []);
 
   useEffect(() => {
-    console.log("6");
+   
     fetch(`https://statsapi.web.nhl.com/${selectedTeamTwo}/roster`)
       .then((res) => res.json())
       .then((data) => {
         if (selectedTeamOne === selectedTeamTwo) {
-          console.log("working");
+         
           let filteredRoaster = roster?.filter(
-            (player) => player.person.fullName != selectedPlayerOne
+            (player) => player.person.fullName !== selectedPlayerOne
           );
 
           setRosterTwo(filteredRoaster);
@@ -115,7 +115,7 @@ const NewQuestion = () => {
 
   ////////////////////////////// Once Player2 selected SetPlayerTwoLink ///////////////////////////////////////////
   useEffect(() => {
-    console.log("6");
+  
     let playerTwo = rosterTwo?.find(
       (player) => player.person.fullName === selectedPlayerTwo
     );
@@ -124,7 +124,7 @@ const NewQuestion = () => {
 
   ////////////////////////////// Once Player2 selected fetch Player Data with PlayerTwoLink ///////////////////////////////////////////
   useEffect(() => {
-    console.log("6");
+   
     fetch(`https://statsapi.web.nhl.com/${playerTwoLink}`)
       .then((res) => res.json())
       .then((data) => {
@@ -168,7 +168,7 @@ const NewQuestion = () => {
     fetch("/new-question", requestOptions)
       .then((res) => res.json())
       .then((json) => {
-        console.log("new-req", json);
+      
         if (json.status === 200) {
           return history.push("/request-submited");
         } else if (json.status === 400) {
