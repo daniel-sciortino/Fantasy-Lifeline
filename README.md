@@ -20,11 +20,20 @@ Simply,
 <img src="client/public/Images/Homepage.png"></img>
 
 <h2> Sign Up </h2>
-
+Members must sign up in order to get access to a profile page which displays vote results. 
+<img src="client/public/Images/Sign In Page.png"></img>
 <h2> Sign In </h2>
-
+Members must sign in using their email & password to see results of previously submited questions.
+<img src="client/public/Images/Sign-in.png"></img>
 <h2> Create new Request </h2>
+![](NewRequest.gif)
+Are you in need of Fantasy help? Simply click on "Get Fantasy Help" and select your two players using the drop down menu. Once the two players in question are selected. Press Submit. Now just sit back and wait for other members to give their advice.
 
 <h2> Give your advice </h2>
+![](GiveAdvice.gif)
+Let's not be selfish now. While waiting for your advice why not share some of your knowledge. Click on "Give Fantasy Advice" and simply click on the player you think is the better option. Not sure who to pick? Simply click the "skip" button to load the next question.
 
 <h2> Profile </h2>
+The profile page is where you will find all the results to the questions you have asked. Must be logged in to access this page.
+
+<img src="client/public/Images/ProfilePage.png">
