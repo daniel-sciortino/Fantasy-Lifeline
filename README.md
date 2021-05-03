@@ -30,7 +30,7 @@ Members must sign in using their email & password to see results of previously s
 Are you in need of Fantasy help? Simply click on "Get Fantasy Help" and select your two players using the drop down menu. Once the two players in question are selected. Press Submit. Now just sit back and wait for other members to give their advice.
 
 <h2> Give your advice </h2>
-![](GiveAdvice.gif)
+![giveAdvice](client/public/Images/GiveAdvice.gif)
 Let's not be selfish now. While waiting for your advice why not share some of your knowledge. Click on "Give Fantasy Advice" and simply click on the player you think is the better option. Not sure who to pick? Simply click the "skip" button to load the next question.
 
 <h2> Profile </h2>
