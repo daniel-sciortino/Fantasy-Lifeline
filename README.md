@@ -17,7 +17,7 @@ Simply,
 <a href="https://www.youtube.com/watch?v=RULiBI3lWzI">Fantasy Lifeline demo</a>
 
 <h2> Homepage </h2>
-<img src"client/public/Images/Homepage.png">
+<img src="client/public/Images/Homepage.png"></img>
 
 <h2> Sign Up </h2>
 
