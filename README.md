@@ -26,14 +26,15 @@ Members must sign up in order to get access to a profile page which displays vot
 Members must sign in using their email & password to see results of previously submited questions.
 <img src="client/public/Images/Sign-in.png"></img>
 <h2> Create new Request </h2>
-![image](https://user-images.githubusercontent.com/77982896/116937268-fc894c80-ac36-11eb-97e0-972993cc112f.png)
 Are you in need of Fantasy help? Simply click on "Get Fantasy Help" and select your two players using the drop down menu. Once the two players in question are selected. Press Submit. Now just sit back and wait for other members to give their advice.
-
-<h2> Give your advice </h2>
 
 ![image](https://user-images.githubusercontent.com/77982896/116937312-0dd25900-ac37-11eb-9bab-94a07577a079.png)
 
+<h2> Give your advice </h2>
+
 Let's not be selfish now. While waiting for your advice why not share some of your knowledge. Click on "Give Fantasy Advice" and simply click on the player you think is the better option. Not sure who to pick? Simply click the "skip" button to load the next question.
+
+![image](https://user-images.githubusercontent.com/77982896/116937268-fc894c80-ac36-11eb-97e0-972993cc112f.png)
 
 <h2> Profile </h2>
 The profile page is where you will find all the results to the questions you have asked. Must be logged in to access this page.
