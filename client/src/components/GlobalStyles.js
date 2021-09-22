@@ -5,14 +5,14 @@ export default createGlobalStyle`
       --primary-color: #EEF0F2;
       --secondary-color: #111820;
       --outline-color: #67a2a2;
-      --primary-bg-color: #022B3A;
+      --primary-bg-color: #181818;
       --secondary-bg-color: #eef0f2;
       --accent-bg-color: #D7ECEF;
       --page-horizontal-padding: 20px;
       --page-vertical-padding: 50px;
       --header-height: 50px;
       --max-content-width: 1200px;
-      --heading-font-family: 'EB Garamond', serif;
+      --heading-font-family: poppins-extralight,poppins,sans-serif;
       --user-img-width: 120px;
       --user-img-margin: 5px;
       --nav-width: 250px;

@@ -2,19 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
+import Button from "./Button";
 
 const Home = () => {
   return (
     <Wrapper>
-      <TitleContainer>
-        <h1>
-          Having trouble deciding which player would suit your Fantasy NHL team
-          better?
-        </h1>
-        <h2>Most times asking your friends for advice is not an option.</h2>
-        <h1>Getting NHL Fantasy help has never been easier before!</h1>
-      </TitleContainer>
-      <RoutesContainer>
+      {/* <MainImage>
+<img src="/Images/homepage.png"></img>
+      </MainImage> */}
+      <DetailsContainer>
+        <TitleContainer>
+          <h1>Join the Community</h1>
+          <DetailsP>
+            <p>
+              Here at FantasyLifeline we know asking your friends for fantasy
+              advice is usually not an option. Join a community where you can
+              get honest fantasy advice for your team without tipping off your
+              friends.
+            </p>
+          </DetailsP>
+          <Button>Get Started</Button>
+        </TitleContainer>
+
+        {/* <RoutesContainer>
         <LinkContainer>
           <VscDebugBreakpointLogUnverified
             style={{
@@ -61,20 +71,43 @@ const Home = () => {
           </h2>
           <StyledLink to="/sign-up"> Sign Up Now!</StyledLink>
         </LinkContainer>
-      </RoutesContainer>
+      </RoutesContainer> */}
+      </DetailsContainer>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  background-image: url("/Images/Sign-in-background.jpeg");
+  height: 92vh;
+  background-image: url("../Images/HomeBG.png");
+  background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+`;
+
+// const MainImage = styled.div`
+//   width: 40vw;
+//   height: 100%;
+
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     image-rendering: auto;
+//   }
+// `;
+
+const DetailsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 `;
 
 const TitleContainer = styled.div`
@@ -82,12 +115,17 @@ const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
+
   h1 {
     color: white;
-    font-size: 3rem;
+    font-size: 5rem;
     margin: 10px;
     margin-top: 40px;
     text-shadow: 1px 0.8px black;
+  }
+  Button {
+    margin-top: 50px;
   }
 `;
 
@@ -106,6 +144,12 @@ const LinkContainer = styled.div`
     color: var(--outline-color);
     text-shadow: 1px 0.8px black;
   }
+`;
+
+const DetailsP = styled.div`
+  max-width: 600px;
+  font-size: 1.5rem;
+  color: white;
 `;
 
 const StyledLink = styled(Link)`
