@@ -12,15 +12,8 @@ const Home = () => {
       </MainImage> */}
       <DetailsContainer>
         <TitleContainer>
-          <h1>Join the Community</h1>
-          <DetailsP>
-            <p>
-              Here at FantasyLifeline we know asking your friends for fantasy
-              advice is usually not an option. Join a community where you can
-              get honest fantasy advice for your team without tipping off your
-              friends.
-            </p>
-          </DetailsP>
+          <h1>Fantasy Lifeline</h1>
+          <h2>Getting fantasy advice just got easier.</h2>
           <Button>Get Started</Button>
         </TitleContainer>
 
@@ -60,7 +53,7 @@ const Home = () => {
           <VscDebugBreakpointLogUnverified
             style={{
               fontSize: "1.5rem",
-              color: "var(--primary-bg-color)",
+              color: "var(--primary-bg-color).",
               marginRight: "5px",
             }}
           />
@@ -102,35 +95,61 @@ const Wrapper = styled.div`
 // `;
 
 const DetailsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
   width: 100%;
   height: 100%;
 `;
 
 const TitleContainer = styled.div`
+  min-height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-right: 20px;
+  background-color: rgb(0, 0, 0, 0);
+
+  /* border-radius: 20px; */
 
   h1 {
-    color: white;
-    font-size: 5rem;
-    margin: 10px;
-    margin-top: 40px;
-    text-shadow: 1px 0.8px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+    color: #F7F7FF;
+    font-size: 18vh;
+    font-family: "Bebas Neue", cursive;
+    font-family: "Oswald", sans-serif;
   }
+
+  h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    color: #F5B800;
+    font-size: 5vh;
+    font-family: "Bebas Neue", cursive;
+    font-family: "Oswald", sans-serif;
+  }
+
   Button {
     margin-top: 50px;
+    /* background-color: #C1C3C1; */
+    background-color: #000;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-family: "Bebas Neue", cursive;
+    font-family: "Oswald", sans-serif;
   }
 `;
 
 const RoutesContainer = styled.div`
-  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
   background-color: var(--secondary-bg-color);
   padding: 20px;
 `;

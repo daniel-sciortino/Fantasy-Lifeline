@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   :root {
-      --primary-color: #EEF0F2;
+      --primary-color: #F7F7FF;
       --secondary-color: #111820;
       --outline-color: #67a2a2;
       --primary-bg-color: #181818;
@@ -34,7 +34,7 @@ export default createGlobalStyle`
 
     html, body {
         max-width: 100vw;
-        background-color: #022B3A;
+        background-color: #181818;;
 
     }
 html, body, div, span, applet, object, iframe,

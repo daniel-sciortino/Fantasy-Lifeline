@@ -7,8 +7,8 @@ const Button = styled.button`
   border: 2px solid;
   border-radius: 10px;
   border-color: (--primary-color);
-  width: 150px;
-  height: 50px;
+  width: 250px;
+  height: 70px;
   color: var(--primary-color);
   background-color: var(--secondary-color);
   cursor: pointer;
