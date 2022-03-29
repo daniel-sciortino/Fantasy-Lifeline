@@ -116,10 +116,10 @@ const TitleContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: 20vh;
-    color: #F7F7FF;
-    font-size: 18vh;
+    color: #f7f7ff;
+    font-size: 17vmin;
     font-family: "Bebas Neue", cursive;
     font-family: "Oswald", sans-serif;
   }
@@ -129,10 +129,10 @@ const TitleContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: 10vh;
-    color: #F5B800;
-    font-size: 5vh;
+    color: #f5b800;
+    font-size: 5vmin;
     font-family: "Bebas Neue", cursive;
     font-family: "Oswald", sans-serif;
   }
