@@ -6,6 +6,12 @@ import Button from "./Button";
 import Introduction from "./Introduction";
 
 const Home = () => {
+  const routeChange = () => {
+    document
+      .getElementById("testing")
+      .scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <>
       <Wrapper>
@@ -16,7 +22,7 @@ const Home = () => {
           <TitleContainer>
             <h1>Fantasy Lifeline</h1>
             <h2>Getting fantasy advice just got easier.</h2>
-            <Button>Get Started</Button>
+            <Button onClick={routeChange}>Get Started</Button>
           </TitleContainer>
 
           {/* <RoutesContainer>
@@ -69,8 +75,9 @@ const Home = () => {
       </RoutesContainer> */}
         </DetailsContainer>
       </Wrapper>
-
-      <Introduction />
+      <div id="testing">
+        <Introduction />
+      </div>
     </>
   );
 };
