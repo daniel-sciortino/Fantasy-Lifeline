@@ -50,7 +50,7 @@ const Signin = () => {
 
   return isPageWide ? (
     <Container>
-      <div>
+      <FormContainer>
         <form onSubmit={handleSubmit}>
           <h1 style={{ color: "var(--primary-bg-color)" }}>Sign in</h1>
           <AuthErrorMsg
@@ -109,11 +109,11 @@ const Signin = () => {
             <p class="signUp"> Sign up.</p>
           </SignUpLink>
         </form>
-      </div>
+      </FormContainer>
     </Container>
   ) : (
     <Container style={{ flexDirection: "column" }}>
-      <div>
+      <FormContainer>
         <form onSubmit={handleSubmit}>
           <AuthErrorMsg
             style={
@@ -180,7 +180,7 @@ const Signin = () => {
             </Link>
           </ButtonContainer>
         </form>
-      </div>
+      </FormContainer>
     </Container>
   );
 };
@@ -188,12 +188,13 @@ const Signin = () => {
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 80vh;
+  height: calc(100vh - 100px);
   /* height: 83vh; */
   justify-content: center;
   align-items: center;
   background-image: url("/Images/Sign-in-background.jpeg");
   background-size: cover;
+  
 
   form {
     height: 500px;
@@ -205,6 +206,7 @@ const Container = styled.div`
     padding: 20px;
     background-color: var(--secondary-bg-color);
     border-radius: 10px;
+    border: solid yellow;
   }
 
   input {
@@ -221,6 +223,11 @@ const Container = styled.div`
     font-size: 50px;
     text-align: center;
   }
+`;
+
+const FormContainer = styled.div `
+width: 80%;
+border: solid red;
 `;
 const ButtonContainer = styled.div`
   display: flex;

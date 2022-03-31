@@ -14,8 +14,8 @@ const Button = styled.button`
   cursor: pointer;
   &:hover {
     /* border-color: (--accent-bg-color); */
-    color: var(--secondary-color);
-    background-color: var(--outline-color);
+    color: black;
+    background-color: var(--primary-color);
   }
   &:disabled {
     color: white;

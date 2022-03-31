@@ -4,6 +4,7 @@ export default createGlobalStyle`
   :root {
       --primary-color: #F7F7FF;
       --secondary-color: #111820;
+      --theme-color: #f5b800;
       --outline-color: #67a2a2;
       --primary-bg-color: #181818;
       --secondary-bg-color: #eef0f2;
@@ -12,7 +13,6 @@ export default createGlobalStyle`
       --page-vertical-padding: 50px;
       --header-height: 50px;
       --max-content-width: 1200px;
-      --heading-font-family: poppins-extralight,poppins,sans-serif;
       --user-img-width: 120px;
       --user-img-margin: 5px;
       --nav-width: 250px;
@@ -29,7 +29,8 @@ export default createGlobalStyle`
     input, button, select, option,
     h1, h2, h3, h4, h5, h6, p,
     text {
-        font-family: 'Rubik', sans-serif;
+        font-family: "Bebas Neue", cursive;
+    font-family: "Oswald", sans-serif;
     }
 
     html, body {

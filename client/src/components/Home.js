@@ -1,23 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 import Button from "./Button";
+import Introduction from "./Introduction";
 
 const Home = () => {
   return (
-    <Wrapper>
-      {/* <MainImage>
+    <>
+      <Wrapper>
+        {/* <MainImage>
 <img src="/Images/homepage.png"></img>
       </MainImage> */}
-      <DetailsContainer>
-        <TitleContainer>
-          <h1>Fantasy Lifeline</h1>
-          <h2>Getting fantasy advice just got easier.</h2>
-          <Button>Get Started</Button>
-        </TitleContainer>
+        <DetailsContainer>
+          <TitleContainer>
+            <h1>Fantasy Lifeline</h1>
+            <h2>Getting fantasy advice just got easier.</h2>
+            <Button>Get Started</Button>
+          </TitleContainer>
 
-        {/* <RoutesContainer>
+          {/* <RoutesContainer>
         <LinkContainer>
           <VscDebugBreakpointLogUnverified
             style={{
@@ -65,8 +67,11 @@ const Home = () => {
           <StyledLink to="/sign-up"> Sign Up Now!</StyledLink>
         </LinkContainer>
       </RoutesContainer> */}
-      </DetailsContainer>
-    </Wrapper>
+        </DetailsContainer>
+      </Wrapper>
+
+      <Introduction />
+    </>
   );
 };
 
@@ -171,19 +176,19 @@ const DetailsP = styled.div`
   color: white;
 `;
 
-const StyledLink = styled(Link)`
-  font-size: 1.2rem;
-  margin: 1rem;
-  text-decoration: none;
-  color: var(--secondary-bg-color);
-  background-color: var(--primary-bg-color);
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  justify-content: center;
-  text-align: center;
-`;
+// const StyledLink = styled(Link)`
+//   font-size: 1.2rem;
+//   margin: 1rem;
+//   text-decoration: none;
+//   color: var(--secondary-bg-color);
+//   background-color: var(--primary-bg-color);
+//   padding: 10px;
+//   border-radius: 8px;
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+//   justify-content: center;
+//   text-align: center;
+// `;
 
 export default Home;

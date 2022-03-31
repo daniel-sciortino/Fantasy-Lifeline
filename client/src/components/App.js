@@ -11,6 +11,7 @@ import ErrorPage from "./ErrorPage";
 import Profile from "./Profile";
 import CompletedPage from "./CompletedPage";
 import SignedUpPage from "./SignedUpPage";
+import Introduction from "./Introduction";
 
 function App() {
   return (
